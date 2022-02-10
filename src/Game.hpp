@@ -15,19 +15,35 @@ private:
     
     Game();
 
+    // Implementation functions for static functions
+    bool I_init(char* title, int x, int y, int w, int h);
+
+    void I_render();
+    void I_handleEvents();
+    void I_update();
+    
+    void I_clean();
+    void I_quit();
+
+    SDL_Renderer* I_getRenderer();
+    bool I_isRunning();
+
 public:
 
     static Game* Instance();
-    bool init(char* title, int x, int y, int w, int h);
+    static bool init(char* title, int x, int y, int w, int h);
 
-    void render();
-    void handleEvents();
-    void update();
+    Game(Game& game) = delete; // Delete copy operator
+    void operator=(const Game&) = delete; // Delete Assignment operator
+
+    static void render();
+    static void handleEvents();
+    static void update();
     
-    void clean();
-    void quit();
+    static void clean();
+    static void quit();
 
-    SDL_Renderer* getRenderer();
-    bool isRunning();
+    static SDL_Renderer* getRenderer();
+    static bool isRunning();
 
 };

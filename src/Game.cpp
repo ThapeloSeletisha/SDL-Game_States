@@ -17,7 +17,7 @@ Game* Game::Instance()
     return instance;
 }
 
-bool Game::init(char* title, int x, int y, int w, int h)
+bool Game::I_init(char* title, int x, int y, int w, int h)
 {
     // Initialize the SDL2 library
     if (SDL_Init(SDL_INIT_EVERYTHING))
@@ -54,14 +54,24 @@ bool Game::init(char* title, int x, int y, int w, int h)
     return true;
 }
 
-void Game::render()
+bool Game::init(char* title, int x, int y, int w, int h)
+{
+    return Instance()->I_init(title ,x ,y ,w ,h);
+}
+
+void Game::I_render()
 {
     SDL_RenderClear(renderer);
     // SDL_RenderCopy(texture)
     SDL_RenderPresent(renderer);
 }
 
-void Game::handleEvents()
+void Game::render()
+{
+    Instance()->I_render();
+}
+
+void Game::I_handleEvents()
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -75,27 +85,57 @@ void Game::handleEvents()
     }
 }
 
+void Game::handleEvents()
+{
+    Instance()->I_handleEvents();
+}
+
+void Game::I_update()
+{
+    // empty
+}
+
 void Game::update()
+{
+    Instance()->I_update();
+}
+
+void Game::I_clean()
 {
     // empty
 }
 
 void Game::clean()
 {
+    Instance()->I_clean();
+}
+
+void Game::I_quit()
+{
     // empty
 }
 
 void Game::quit()
 {
-    // empty
+    Instance()->I_quit();
 }
 
-SDL_Renderer* Game::getRenderer()
+SDL_Renderer* Game::I_getRenderer()
 {
     return renderer;
 }
 
-bool Game::isRunning()
+SDL_Renderer* Game::getRenderer()
+{
+    return Instance()->I_getRenderer();
+}
+
+bool Game::I_isRunning()
 {
     return running;
+}
+
+bool Game::isRunning()
+{
+    return Instance()->I_isRunning();
 }
