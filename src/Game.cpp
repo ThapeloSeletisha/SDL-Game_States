@@ -54,6 +54,19 @@ bool Game::I_init(char* title, int x, int y, int w, int h)
     return true;
 }
 
+/*Initializes SDL and its window and renderer
+
+Args:
+    title: The title at to be displayed on the windows navbar
+    x: The horizontal position of the window in px
+    y: The veritical position of the window in px
+    w: The width of the window in px
+    h: The height of the window in px
+
+Returns:
+    True if successful and False otherwise
+
+*/
 bool Game::init(char* title, int x, int y, int w, int h)
 {
     return Instance()->I_init(title ,x ,y ,w ,h);
@@ -66,6 +79,8 @@ void Game::I_render()
     SDL_RenderPresent(renderer);
 }
 
+/*
+*/
 void Game::render()
 {
     Instance()->I_render();
@@ -85,6 +100,8 @@ void Game::I_handleEvents()
     }
 }
 
+/*Processes all events
+*/
 void Game::handleEvents()
 {
     Instance()->I_handleEvents();
@@ -95,6 +112,8 @@ void Game::I_update()
     // empty
 }
 
+/*
+*/
 void Game::update()
 {
     Instance()->I_update();
@@ -105,6 +124,8 @@ void Game::I_clean()
     // empty
 }
 
+/*
+*/
 void Game::clean()
 {
     Instance()->I_clean();
@@ -115,6 +136,8 @@ void Game::I_quit()
     // empty
 }
 
+/*
+*/ 
 void Game::quit()
 {
     Instance()->I_quit();
@@ -125,6 +148,12 @@ SDL_Renderer* Game::I_getRenderer()
     return renderer;
 }
 
+/*
+Args:
+
+Returns:
+    The renderer for the SDL_Window
+*/ 
 SDL_Renderer* Game::getRenderer()
 {
     return Instance()->I_getRenderer();
@@ -135,6 +164,12 @@ bool Game::I_isRunning()
     return running;
 }
 
+/*
+Args:
+
+Returns:
+    False if the game is to be stopped and True otherwise
+*/
 bool Game::isRunning()
 {
     return Instance()->I_isRunning();

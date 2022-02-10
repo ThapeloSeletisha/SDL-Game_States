@@ -14,7 +14,8 @@ private:
     static Game* instance;
     
     Game();
-
+    static Game* Instance();
+    
     // Implementation functions for static functions
     bool I_init(char* title, int x, int y, int w, int h);
 
@@ -30,7 +31,7 @@ private:
 
 public:
 
-    static Game* Instance();
+    
     static bool init(char* title, int x, int y, int w, int h);
 
     Game(Game& game) = delete; // Delete copy operator
