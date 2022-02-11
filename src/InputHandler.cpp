@@ -1,18 +1,18 @@
 #include "InputHandler.hpp"
 
-InputHandler* InputHandler::instance = nullptr;
+InputHandler* InputHandler::s_pInstance = nullptr;
 
 InputHandler::InputHandler()
 {
-    mouseButtonStates = vector<bool>(3);
+    m_mouseButtonStates = vector<bool>(3);
 }
 
 InputHandler* InputHandler::Instance()
 {
-    if (!instance) {
-        instance = new InputHandler();
+    if (!s_pInstance) {
+        s_pInstance = new InputHandler();
     }
-    return instance;
+    return s_pInstance;
 }
 
 /*Updates the mouse position
@@ -28,15 +28,15 @@ void InputHandler::onMouseButtonDown(SDL_Event& e)
 {
     if (e.button.button == SDL_BUTTON_LEFT)
     {
-        mouseButtonStates[LEFT] = true;
+        m_mouseButtonStates[LEFT] = true;
     }
     if (e.button.button == SDL_BUTTON_MIDDLE)
     {
-        mouseButtonStates[MIDDLE] = true;
+        m_mouseButtonStates[MIDDLE] = true;
     }
     if (e.button.button == SDL_BUTTON_RIGHT)
     {
-        mouseButtonStates[RIGHT] = true;
+        m_mouseButtonStates[RIGHT] = true;
     }
 }
 
@@ -46,15 +46,15 @@ void InputHandler::onMouseButtonUp(SDL_Event& e)
 {
     if (e.button.button == SDL_BUTTON_LEFT)
     {
-        mouseButtonStates[LEFT] = false;
+        m_mouseButtonStates[LEFT] = false;
     }
     if (e.button.button == SDL_BUTTON_MIDDLE)
     {
-        mouseButtonStates[MIDDLE] = false;
+        m_mouseButtonStates[MIDDLE] = false;
     }
     if (e.button.button == SDL_BUTTON_RIGHT)
     {
-        mouseButtonStates[RIGHT] = false;
+        m_mouseButtonStates[RIGHT] = false;
     }
 }
 
@@ -89,8 +89,8 @@ void InputHandler::update()
 
 void InputHandler::I_clean()
 {
-    delete instance;
-    instance = nullptr;
+    delete s_pInstance;
+    s_pInstance = nullptr;
 }
 
 /*
@@ -102,7 +102,7 @@ void InputHandler::clean()
 
 bool InputHandler::I_getMouseButtonState(mouse_button button)
 {
-    return mouseButtonStates[button];
+    return m_mouseButtonStates[button];
 }
 
 /*Checks if mouse button is down or up

@@ -1,20 +1,20 @@
 #include "Game.hpp"
 
-Game* Game::instance = nullptr;
+Game* Game::s_pInstance = nullptr;
 
 Game::Game()
 {
-    window = nullptr;
-    renderer = nullptr;
-    running = true;
+    m_pWindow = nullptr;
+    m_pRenderer = nullptr;
+    m_running = true;
 }
 
 Game* Game::Instance()
 {
-    if (!instance) {
-        instance = new Game();
+    if (!s_pInstance) {
+        s_pInstance = new Game();
     }
-    return instance;
+    return s_pInstance;
 }
 
 bool Game::I_init(char* title, int x, int y, int w, int h)
@@ -29,11 +29,11 @@ bool Game::I_init(char* title, int x, int y, int w, int h)
 
     // Initialize window
     Uint32 flags = SDL_WINDOW_SHOWN;
-    window = SDL_CreateWindow(title, 
+    m_pWindow = SDL_CreateWindow(title, 
         x, y,
         w, h, flags);
     
-    if(!window)
+    if(!m_pWindow)
     {
         cout << "Failed to create window" << endl;
         cout << "SDL Error: " << SDL_GetError() << endl;
@@ -41,16 +41,16 @@ bool Game::I_init(char* title, int x, int y, int w, int h)
     }
 
     // Initialize renderer
-    renderer = SDL_CreateRenderer(window, -1, 
+    m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 
         SDL_RENDERER_ACCELERATED);
 
-    if (!renderer)
+    if (!m_pRenderer)
     {
         cout << "Failed to create renderer" << endl;
         cout << "SDL Error: " << SDL_GetError() << endl;
         return false;
     }
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
     return true;
 }
 
@@ -74,9 +74,9 @@ bool Game::init(char* title, int x, int y, int w, int h)
 
 void Game::I_render()
 {
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(m_pRenderer);
     // SDL_RenderCopy(texture)
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(m_pRenderer);
 }
 
 /*
@@ -124,7 +124,7 @@ void Game::clean()
 
 void Game::I_quit()
 {
-    running = false;
+    m_running = false;
 }
 
 /*Starts the sequence to close the program
@@ -136,7 +136,7 @@ void Game::quit()
 
 SDL_Renderer* Game::I_getRenderer()
 {
-    return renderer;
+    return m_pRenderer;
 }
 
 /*
@@ -152,7 +152,7 @@ SDL_Renderer* Game::getRenderer()
 
 bool Game::I_isRunning()
 {
-    return running;
+    return m_running;
 }
 
 /*

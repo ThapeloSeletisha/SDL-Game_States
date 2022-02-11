@@ -16,8 +16,8 @@ class InputHandler
 {
 private:
 
-    static InputHandler* instance;
-    vector<bool> mouseButtonStates;
+    static InputHandler* s_pInstance;
+    vector<bool> m_mouseButtonStates;
 
     void onMouseMove();
     void onMouseButtonDown(SDL_Event& e);

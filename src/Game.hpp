@@ -8,11 +8,11 @@ class Game
 {
 private:
 
-    SDL_Window* window;
-    SDL_Renderer* renderer;
+    SDL_Window* m_pWindow;
+    SDL_Renderer* m_pRenderer;
 
-    bool running;
-    static Game* instance;
+    bool m_running;
+    static Game* s_pInstance;
     
     Game();
     static Game* Instance();
