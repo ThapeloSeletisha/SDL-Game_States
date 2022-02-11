@@ -88,16 +88,7 @@ void Game::render()
 
 void Game::I_handleEvents()
 {
-    SDL_Event event;
-    while (SDL_PollEvent(&event))
-    {
-        switch(event.type)
-        {
-            case SDL_QUIT:
-                running = false;
-                break;
-        }
-    }
+    InputHandler::update();
 }
 
 /*Processes all events
@@ -133,10 +124,10 @@ void Game::clean()
 
 void Game::I_quit()
 {
-    // empty
+    running = false;
 }
 
-/*
+/*Starts the sequence to close the program
 */ 
 void Game::quit()
 {

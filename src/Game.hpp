@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SDL2/SDL.h>
+#include "InputHandler.hpp"
 using namespace std;
 
 class Game
