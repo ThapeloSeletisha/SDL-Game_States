@@ -156,3 +156,8 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
     /*Consider adding onKeyDown() and onKeyUp() functions
     */
 }
+
+const Vector2D& InputHandler::getMousePosition()
+{
+    return Instance()->m_mousePosition;
+}

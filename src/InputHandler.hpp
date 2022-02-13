@@ -43,7 +43,7 @@ public:
 
     static bool getMouseButtonState(mouse_button button);
     static bool isKeyDown(SDL_Scancode key);
-    const Vector2D& getMousePosition();
+    static const Vector2D& getMousePosition();
 
 };
 
