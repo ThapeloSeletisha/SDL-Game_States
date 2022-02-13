@@ -5,6 +5,10 @@ InputHandler* InputHandler::s_pInstance = nullptr;
 InputHandler::InputHandler()
 {
     m_mouseButtonStates = vector<bool>(3);
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    m_mousePosition.setX(x);
+    m_mousePosition.setY(y);
 }
 
 InputHandler* InputHandler::Instance()
@@ -17,9 +21,10 @@ InputHandler* InputHandler::Instance()
 
 /*Updates the mouse position
 */
-void InputHandler::onMouseMove()
+void InputHandler::onMouseMove(SDL_Event& e)
 {
-    // empty
+    m_mousePosition.setX(e.motion.x);
+    m_mousePosition.setY(e.motion.y);
 }
 
 /*Updates mouseButtonStates for mouse down event
@@ -75,6 +80,10 @@ void InputHandler::I_update()
 
             case SDL_MOUSEBUTTONUP:
                 onMouseButtonUp(event);
+                break;
+
+            case SDL_MOUSEMOTION:
+                onMouseMove(event);
                 break;
         }
     }

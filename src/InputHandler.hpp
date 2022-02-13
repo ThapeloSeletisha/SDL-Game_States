@@ -2,7 +2,9 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <vector>
+#include <string>
 #include "Game.hpp"
+#include "Vector2D.hpp"
 using namespace std;
 
 // Consider adding onKeyDown() and onKeyUp() functions
@@ -18,8 +20,9 @@ private:
 
     static InputHandler* s_pInstance;
     vector<bool> m_mouseButtonStates;
+    Vector2D m_mousePosition;
 
-    void onMouseMove();
+    void onMouseMove(SDL_Event& e);
     void onMouseButtonDown(SDL_Event& e);
     void onMouseButtonUp(SDL_Event& e);
 
@@ -40,6 +43,7 @@ public:
 
     static bool getMouseButtonState(mouse_button button);
     static bool isKeyDown(SDL_Scancode key);
+    const Vector2D& getMousePosition();
 
 };
 

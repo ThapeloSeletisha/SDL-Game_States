@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include <string>
 using namespace std;
 
 class Vector2D
@@ -11,6 +12,7 @@ private:
 public:
 
     Vector2D(double x, double y);
+    Vector2D();
 
     double getX() const, getY() const;
     void setX(double x), setY(double y);
@@ -28,5 +30,7 @@ public:
 
     Vector2D operator/(double scalar) const;
     Vector2D& operator/=(double scalar);
+
+    operator string() const;
 
 };

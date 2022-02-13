@@ -1,7 +1,10 @@
 #include "Vector2D.hpp"
 
-Vector2D::Vector2D(double x, double y) 
-    : m_x(x), m_y(y){}
+Vector2D::Vector2D():
+    m_x(-1), m_y(-1){}
+
+Vector2D::Vector2D(double x, double y): 
+    m_x(x), m_y(y){}
 
 double Vector2D::getX() const
 {
@@ -96,4 +99,9 @@ Vector2D& Vector2D::operator/=(double scalar)
     m_x = m_x / scalar;
     m_y = m_y / scalar;
     return *this;
+}
+
+Vector2D::operator string() const
+{
+    return to_string(m_x) + "," + to_string(m_y);
 }
