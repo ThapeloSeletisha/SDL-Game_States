@@ -109,7 +109,7 @@ void InputHandler::clean()
     Instance()->I_clean();
 }
 
-bool InputHandler::I_getMouseButtonState(mouse_button button)
+bool InputHandler::I_getMouseButtonState(MouseButton button)
 {
     return m_mouseButtonStates[button];
 }
@@ -122,9 +122,9 @@ Args:
 Returns:
     true if button is down and false otherwise
 */
-bool InputHandler::getMouseButtonState(mouse_button button)
+bool InputHandler::getMouseButtonState(MouseButton button)
 {
-    return Instance()->getMouseButtonState(button);
+    return Instance()->I_getMouseButtonState(button);
 }
 
 bool InputHandler::I_isKeyDown(SDL_Scancode key)

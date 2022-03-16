@@ -1,4 +1,6 @@
 #include "Game.hpp"
+#include "PlayState.hpp"
+#include "MenuState.hpp"
 
 Game* Game::s_pInstance = nullptr;
 
@@ -51,6 +53,9 @@ bool Game::I_init(char* title, int x, int y, int w, int h)
         return false;
     }
     SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+
+    GameStateMachine::pushState(new MenuState());
+
     return true;
 }
 
@@ -75,6 +80,7 @@ bool Game::init(char* title, int x, int y, int w, int h)
 void Game::I_render()
 {
     SDL_RenderClear(m_pRenderer);
+    GameStateMachine::render();
     // SDL_RenderCopy(texture)
     SDL_RenderPresent(m_pRenderer);
 }
@@ -100,7 +106,7 @@ void Game::handleEvents()
 
 void Game::I_update()
 {
-    // empty
+    GameStateMachine::update();
 }
 
 /*

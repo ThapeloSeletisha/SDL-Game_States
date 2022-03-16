@@ -9,7 +9,7 @@ using namespace std;
 
 // Consider adding onKeyDown() and onKeyUp() functions
 
-enum mouse_button
+enum MouseButton
 {
     LEFT, MIDDLE, RIGHT
 };
@@ -33,7 +33,7 @@ private:
     void I_update();
     void I_clean();
 
-    bool I_getMouseButtonState(mouse_button button);
+    bool I_getMouseButtonState(MouseButton button);
     bool I_isKeyDown(SDL_Scancode key);
 
 public:
@@ -41,7 +41,7 @@ public:
     static void update();
     static void clean();
 
-    static bool getMouseButtonState(mouse_button button);
+    static bool getMouseButtonState(MouseButton button);
     static bool isKeyDown(SDL_Scancode key);
     static const Vector2D& getMousePosition();
 
