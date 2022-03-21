@@ -13,8 +13,8 @@ private:
 
 public:
 
-    void menuToPlay();
-    void exitFromMenu();
+    void menuToPlay(); // callback
+    void exitFromMenu(); // callback
 
     virtual ~MenuState(){};
     
