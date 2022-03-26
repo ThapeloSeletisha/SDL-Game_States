@@ -16,6 +16,7 @@ public:
     void menuToPlay(); // callback
     void exitFromMenu(); // callback
 
+    MenuState(){};
     virtual ~MenuState(){};
     
     virtual void update();

@@ -3,12 +3,9 @@
 
 const StateID PlayState::s_ID = PLAY;
 
-PlayState::~PlayState()
-{}
 
 void PlayState::update()
 {
-    cout << "PlayState" << endl;
     if (InputHandler::getMouseButtonState(RIGHT))
     {
         GameStateMachine::changeState(new MenuState());
@@ -22,6 +19,7 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
+    cout << "entering PlayState" << endl;
     return true;
 }
 

@@ -16,7 +16,6 @@ void MenuState::exitFromMenu()
 
 void MenuState::update()
 {
-    cout << "Menu State" << endl;
     if (InputHandler::getMouseButtonState(LEFT))
     {
         GameStateMachine::changeState(new PlayState());
@@ -30,6 +29,7 @@ void MenuState::render()
 
 bool MenuState::onEnter()
 {
+    cout << "entering MenuState" << endl;
     return true;
 }
 

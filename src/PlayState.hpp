@@ -11,7 +11,8 @@ private:
 
 public:
 
-    virtual ~PlayState();
+    PlayState(){};
+    virtual ~PlayState(){};
 
     virtual void update();
     virtual void render();

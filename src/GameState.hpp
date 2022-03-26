@@ -13,11 +13,11 @@ public:
     GameState(){};
     virtual ~GameState(){};
 
-    virtual void update(){};
-    virtual void render(){};
+    virtual void update() = 0;
+    virtual void render() = 0;
 
-    virtual bool onEnter(){};
-    virtual bool onExit(){};
+    virtual bool onEnter() = 0;
+    virtual bool onExit() = 0;
 
-    virtual StateID getStateID(){};
+    virtual StateID getStateID() const = 0;
 };
