@@ -18,7 +18,7 @@ private:
     static Game* Instance();
     
     // Implementation functions for static functions
-    bool I_init(char* title, int x, int y, int w, int h);
+    bool I_init(const char* title, int x, int y, int w, int h);
 
     void I_render();
     void I_handleEvents();
@@ -33,7 +33,7 @@ private:
 public:
 
     
-    static bool init(char* title, int x, int y, int w, int h);
+    static bool init(const char* title, int x, int y, int w, int h);
 
     Game(Game& game) = delete; // Delete copy operator
     void operator=(const Game&) = delete; // Delete Assignment operator

@@ -19,7 +19,7 @@ Game* Game::Instance()
     return s_pInstance;
 }
 
-bool Game::I_init(char* title, int x, int y, int w, int h)
+bool Game::I_init(const char* title, int x, int y, int w, int h)
 {
     // Initialize the SDL2 library
     if (SDL_Init(SDL_INIT_EVERYTHING))
@@ -72,7 +72,7 @@ Returns:
     True if successful and False otherwise
 
 */
-bool Game::init(char* title, int x, int y, int w, int h)
+bool Game::init(const char* title, int x, int y, int w, int h)
 {
     return Instance()->I_init(title ,x ,y ,w ,h);
 }
